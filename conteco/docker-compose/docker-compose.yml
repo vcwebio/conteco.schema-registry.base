@@ -1,0 +1,26 @@
+---
+version: '3'
+services:
+
+# START SERVICE kafka.base
+  kafka:
+    image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.kafka.base:5.2.3
+    environment: [] 
+    command: []
+    volumes: []
+    ports: [${CONTECO_DC_KAFKA_PORTS}]
+    networks: [${CONTECO_DC_KAFKA_NETWORKS}]
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources: 
+        limits: 
+          cpus: '${CONTECO_DC_KAFKA_DEPLOY_RESOURCES_LIMITS_CPUS}'
+          memory: '${CONTECO_DC_KAFKA_DEPLOY_RESOURCES_LIMITS_MEMORY}'
+        reservations:
+          cpus: '${CONTECO_DC_KAFKA_DEPLOY_RESOURCES_RESERVATIONS_CPUS}'
+          memory: '${CONTECO_DC_KAFKA_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}'
+# END SERVICE kafka.base
+
+volumes: {${CONTECO_DC_GLOBAL_VOLUMES}}
+networks: {${CONTECO_DC_GLOBAL_NETWORKS}}

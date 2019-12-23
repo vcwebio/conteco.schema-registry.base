@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-export CONTECO_LABEL="Conteco kafka base"
-export CONTECO_DESCRIPTION="The ContEco Confluent Kafka base image."
+export CONTECO_LABEL="kafka.base - ContEco"
+export CONTECO_DESCRIPTION="Confluent Kafka Base image, with configuration changes."
 
 export CONTECO_TYPE="kafka"
 export CONTECO_NAME="base"

@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-export CONTECO_LABEL="kafka.base - ContEco"
-export CONTECO_DESCRIPTION="Confluent Kafka Base image, with configuration changes."
+export CONTECO_LABEL="schema-registry.base - ContEco"
+export CONTECO_DESCRIPTION="Confluent Schema Registry base image, with configuration changes."
 
-export CONTECO_TYPE="kafka"
+export CONTECO_TYPE="schema-registry"
 export CONTECO_NAME="base"
 export CONTECO_TAG="5.3.1"
 
-export CONTECO_BASE="external.kafka:5.3.1"
+export CONTECO_BASE="external.schema-registry:5.3.1"
 export CONTECO_BUILD="image-base"

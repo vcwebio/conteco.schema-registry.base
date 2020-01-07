@@ -1,6 +1,6 @@
 ##### BEGIN image.base/Dockerfile/image-header #####
 FROM vcwebio/conteco.image.wrapper AS wrapper
-FROM vcwebio/conteco.external.kafka:5.3.1 AS base
+FROM vcwebio/conteco.external.schema-registry:5.3.1 AS base
 ##### END image.base/Dockerfile/image-header #####
 
 ##### BEGIN image.base/Dockerfile/conteco #####
@@ -16,26 +16,25 @@ COPY ./ /conteco/repo/
 
 ##### BEGIN image/Dockerfile/build-instructions #####
 ENV CONTECO_ENTRYPOINT "/etc/confluent/docker/run"
-COPY ./conteco/configs/etc/kafka/server.properties /etc/kafka/server.properties
 ##### END image/Dockerfile/build-instructions #####
 
 ##### BEGIN image.base/Dockerfile/env-labels-footer #####
 ENV CONTECO_REALM="vcwebio" \
     CONTECO_ECOSYSTEM="conteco" \
-    CONTECO_TYPE="kafka" \
+    CONTECO_TYPE="schema-registry" \
     CONTECO_NAME="base" \
     CONTECO_TAG="5.3.1" \
-    CONTECO_BASE="external.kafka:5.3.1" \
+    CONTECO_BASE="external.schema-registry:5.3.1" \
     CONTECO_BUILD="image-base"
 LABEL io.vcweb.schema-version="1.0" \
       io.vcweb.realm="vcwebio" \
       io.vcweb.ecosystem="conteco" \
-      io.vcweb.type="kafka" \
+      io.vcweb.type="schema-registry" \
       io.vcweb.name="base" \
       io.vcweb.tag="5.3.1" \
-      io.vcweb.base="external.kafka:5.3.1" \
+      io.vcweb.base="external.schema-registry:5.3.1" \
       io.vcweb.build="image-base" \
-      io.vcweb.label="kafka.base - ContEco" \
-      io.vcweb.description="Confluent Kafka Base image, with configuration changes." \
-      io.vcweb.docker.cmd.help="docker run vcwebio/conteco.kafka.base --help" 
+      io.vcweb.label="schema-registry.base - ContEco" \
+      io.vcweb.description="Confluent Schema Registry base image, with configuration changes." \
+      io.vcweb.docker.cmd.help="docker run vcwebio/conteco.schema-registry.base --help"
 ##### END image.base/Dockerfile/env-labels-footer #####

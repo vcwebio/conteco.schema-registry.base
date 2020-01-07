@@ -1,0 +1,26 @@
+---
+version: '3'
+services:
+
+# START SERVICE kafka.base
+  kafka:
+    image: ${CONTECO_REGISTRY}${CONTECO_REALM}/conteco.kafka.base:5.3.1
+    environment: ['SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=zookeeper:2181', 'SCHEMA_REGISTRY_HOST_NAME=schema_registry', 'SCHEMA_REGISTRY_LISTENERS=http://schema_registry:8081']
+    command: []
+    volumes: ['${CONTECO_TYPE}_conteco_dc_schema_registry_volume:/var/lib/schema_registry/data']
+    ports: [${CONTECO_DC_SCHEMA_REGISTRY_PORTS}]
+    networks: [${CONTECO_TYPE}_overlay]
+    deploy:
+      mode: replicated
+      resources:
+        limits:
+          cpus: '${CONTECO_DC_SCHEMA_REGISTRY_DEPLOY_RESOURCES_LIMITS_CPUS}'
+          memory: '${CONTECO_DC_SCHEMA_REGISTRY_DEPLOY_RESOURCES_LIMITS_MEMORY}'
+        reservations:
+          cpus: '${CONTECO_DC_SCHEMA_REGISTRY_DEPLOY_RESOURCES_RESERVATIONS_CPUS}'
+          memory: '${CONTECO_DC_SCHEMA_REGISTRY_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}'
+      labels: []
+# END SERVICE kafka.base
+
+volumes: {${CONTECO_TYPE}_conteco_dc_schema_registry_volume: { external: true }}
+networks: {${CONTECO_TYPE}_overlay: { external: true }}

@@ -4,7 +4,7 @@ services:
 
 # START SERVICE schema-registry.base
   schema-registry:
-    image: ${CONTECO_REGISTRY}${CONTECO_REALM}/conteco.schema-registry.base:5.3.1
+    image: ${CONTECO_REGISTRY}${CONTECO_REALM_RUNTIME}/conteco.schema-registry.base:5.3.1
     environment: ['SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=zookeeper:2181', 'SCHEMA_REGISTRY_HOST_NAME=schema_registry', 'SCHEMA_REGISTRY_LISTENERS=http://schema_registry:8081']
     command: []
     volumes: ['${CONTECO_TYPE}_conteco_dc_schema_registry_volume:/var/lib/schema_registry/data']
